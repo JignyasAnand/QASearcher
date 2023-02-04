@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Questions</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type=text/javascript>
+            $(function() {
+              $('a#callfunc').on('click', function(e) {
+                e.preventDefault()
+                $.getJSON('/open_all',
+                    function(data) {
+                  //do nothing
+                });
+                return false;
+              });
+            });
+            $(function() {
+              $('a#callfunc2').on('click', function(e) {
+                e.preventDefault()
+                $.getJSON('/generate',
+                    function(data) {
+                  //do nothing
+                });
+                return false;
+              });
+            });
+    </script>
+</head>
+<body>
+<h1 id="mainhead">Question Searcher</h1>
+<form id="bform">
+    <a href=# id="callfunc"><button type="button" class="button">Open All Links</button></a>
+    <a href=# id="callfunc2">
+        <button type="button" class="popup button" onclick="myFunction()">Generate Text File
+        <span class="popuptext" id="myPopup">Generated The Text File</span>
+        </button>
+    </a>
+</form>
+{#<div class="popup" onclick="myFunction()" style="text-align: center">Click me to toggle the popup!#}
+{#  <span class="popuptext" id="myPopup">A Simple Popup!</span>#}
+{#</div>#}
+{#<p>{{ temps }}</p>#}
+<table style="width: 50%">
+    <colgroup>
+       <col span="1" style="width: 12.5%;">
+       <col span="1" style="width: 75%;">
+       <col span="1" style="width: 12.5%;">
+    </colgroup>
+
+    <tbody>
+        <tr>
+            <th>ID</th>
+            <th>Questions</th>
+            <th>Link</th>
+        </tr>
+        {% for i,j,k in conts %}
+        <tr>
+            <td><a href="{{ i }}"><span> {{ i }}</span></a></td>
+            <td>{{ j }}</td>
+            <td><a href="{{ k }}" target="_blank"><span>Go to Link</span></a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<script>
+// When the user clicks on div, open the popup
+function myFunction() {
+  var popup = document.getElementById("myPopup");
+  popup.classList.toggle("show");
+}
+</script>
+</body>
+</html>

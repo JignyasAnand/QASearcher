@@ -1,0 +1,100 @@
+Compare and contrast  ODBC and JDBC connections
+
+Explain different types of JDBC drivers?
+
+Explain complete JDBC connection process?
+
+Explain J2EE Multi-Tire Architecture with neat diagram.
+
+What are the JDBC statements? Give examples for both (Statement and Prepared statement)
+
+What are the differences between execute, executeQuery, and executeUpdate?
+
+What are the building blocks of HTML and specify them with common example
+
+Explain advantages and disadvantages of JDBC-ODBC Bridge Driver,Native Driver,Network Protocol Driver, and Thin Driver?
+
+Write HTML tags to link css file, to insert mutimedia objects into HTML page
+
+Write a JDBC program to validate login details from database.
+
+Explain about HTML form tags and create a registration form with all elements(text,pwd,number,email,dropdownlist, multiple rows,check box,button etc)
+
+Design a personal blog of your's having personal information, education skills, certifications done and extra curricular related information use required CSS elements to enhance your skills and abilities.
+
+Demonstrate the following with syntaxes PreparedStatement Interface, ResultSet interface, Statement interface, Connection interface, DriverManager class
+
+Write the code to create biodata of a student using HTML use table tags for alignment and use css for formatting.
+
+Write a simple JDBC program to create, insert and update values into student table
+
+Design a WEB PAGE for a software company having welcome page, signin page, signup page, main page having menu items and headers, footers, company images, links etc.
+
+Write JDBC program to alter the table columns as adding new column, modify the datatype of existing column and update data values by taking a condition-take employee table as reference.
+
+Write JDBC program to illustrate ResultSetMetaData interface, DatabaseMetaData interface, take student table as reference.
+
+Explain the steps to establish connection with database using JDBC also specify the complete code.
+
+Explain four type of JDBC drivers, describe various steps involved in JDBC with simple code snippet.
+
+Explain working with Document Object Model objects innerHTML and innerText with examples.
+
+Specify at least four input form elements in HTML with simple examples of each
+
+Explain the different tags used for embedding javascript into HTML, write a code snippet for the same.
+
+Design a HTML form page by making use of suitable elements to make it as dynamic web page.
+
+Explain about statement, prepared statement and callable statements with suitable example.
+
+Develop a JDBC Application to connect oracledatabase?
+
+Develop a JDBC Callable Program by scanning thedata from the keyboard dynamically, which can insertthe employee data (empid,empname,empemail) in theoracle database?
+
+Write the Advantages of JSP over Servlet
+
+List the Steps to Write Java Servlet Program?
+
+How to Write Deployment Descriptor web.xml In Servlet? and How to Set Classpath For Servlet, setting Classpath For servlet-api.jar
+
+Explain JSP life cycle
+
+Explain Servlet life cycle
+
+Compare and contrast JSP:include and JSP:forward methods
+
+Write a program to explain the functionality of RequestDispatcher
+
+Creating registration form using JSP with database connectivity, write the complete code.
+
+How to Retrieve Client Input Data in Servlet, write a program to support the concept.
+
+Demonstrate the working with cookies and session tracking in servlets.
+
+Brief the sutiation where we can use executeQuery() and executeUpdate() methods, write a code snippet for the same.
+
+Define JSP, explain different type of JSP tags by taking suitable example.
+
+Explain the life cycle of servlet, list and explain the core classes and interfaces in javax.servlet package.
+
+Demonstrate the working with Usersessions and cookies in JSP.
+
+Develop a Servlet program to take data from HTMLdocument and store it in the database?
+
+How does a Servlet get the initialization parameters,show a web.xml file?
+
+Ms. Mary want to develop user login applicationusing Session, help her to develop application byincorporating following tasks. i) Design a login formwhich must contains email id and password as fields,validate them by using javascript.
+
+Follow the description on 6a. ii) The followingconditions must be followed by email id andpassword fields. • email id and password fields shouldnot be empty, if condition fails error message shouldbe displayed at the filed itself. email id filed must takevalid email, if condition fails error message should bedisplayed at the filed itself. password must be at least5 characters, if condition fails error message shouldbe displayed at the field itself. iii) When the usersubmits the email id and password to the server. The email and password must be checked against the dataalready available in Table
+
+Illustrate the process of Passing Parameters from one JSP Page to another ?
+
+Develop a JSP page that will display the number oftimes a request is made and the current date-time ofthe system?
+
+Identify the difference between Servlet,GenericServlet and HttpServlet
+
+Differentiate between forward() and sendRedirect().and develop a Servlet application to explain aboutresponse.sendRedirect() method ?
+
+Develop a Servlet application that accepts productdetails from HTML form and stores the productdetails into the database. The product table containsprodId, prodName and prodPrice.Develop a Servlet Application to connect to thedatabase to retrieve product details from the producttable.
+

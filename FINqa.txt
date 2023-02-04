@@ -1,0 +1,9 @@
+Q) Compare and contrast  ODBC and JDBC connections
+A) qewd1wdfs giutfdcm x
+
+Q) Explain different types of JDBC drivers?
+A) gtrfvdc
+
+Q) Explain complete JDBC connection process?
+A) New answer 3
+

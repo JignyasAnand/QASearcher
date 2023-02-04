@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>{{ conts[1] }}</h1>
+<h3>Previous Answers</h3>
+<p style="font-family: 'Consolas', 'Menlo', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', monospace; font-size: 17px">{{ conts[2] }}</p>
+
+<h3>New Answers</h3>
+<form id="nform" action="rets" method="post">
+    <input type="hidden" value="{{ conts[0] }}" name="qid" id="qid">
+    <textarea form="nform" name="tarea" id="tarea" style="height: 100px; width: 80%">{{ conts[2] }}</textarea><br>
+    <button type="submit">Save</button>
+</form><br>
+
+{% if (conts[0]>0)  %}
+    {% if (conts[0] < conts[3]) %}
+        <a href="{{ conts[0] + 1 }}"><button>next</button></a>
+        <a href="{{ conts[0] - 1 }}"><button>previous</button></a>
+        {% elif (conts[0]==conts[3]) %}
+        <a href="{{ conts[0] - 1 }}"><button>previous</button></a>
+    {% endif %}
+    <a href="/"><button>Home</button></a>
+{% endif %}
+</body>
+</html>
