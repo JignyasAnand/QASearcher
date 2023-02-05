@@ -4,6 +4,8 @@ import webbrowser
 import pickle
 import re
 
+fileoc="qanda.txt"
+
 def getURLs(string):
     # findall() has been used
     # with valid conditions for urls in string
@@ -32,7 +34,7 @@ def home():
     res=p_utils.getconts()
     ltemp=[i for i in range(1 ,len(res)+1)]
     links=p_utils.getlinks()
-    f = open("qanda.txt", "rb")
+    f = open(fileoc, "rb")
     t = pickle.load(f)
     print(t)
     nansd=[]
@@ -61,7 +63,7 @@ def ind(num1):
         try:
             num1=int(num1)
             dct=gets()
-            f = open("qanda.txt", "rb")
+            f = open(fileoc, "rb")
             t = pickle.load(f)
 
             try:
@@ -78,11 +80,11 @@ def ind(num1):
     else:
         qid=request.form.get("qid")
         ans=request.form.get("tarea").strip()
-        f = open("qanda.txt", "rb")
+        f = open(fileoc, "rb")
         t = pickle.load(f)
         t[int(qid)]=ans
         f.close()
-        f = open("qanda.txt", "wb")
+        f = open(fileoc, "wb")
         pickle.dump(t, f)
         f.close()
         return redirect(url_for("ind", num1=qid))
@@ -107,7 +109,7 @@ def rets():
 
 @app.route("/generate")
 def gens():
-    f = open("qanda.txt", "rb")
+    f = open(fileoc, "rb")
     t = pickle.load(f)
     ques=gets()
     nf=open("FINqa.txt" ,"w")
