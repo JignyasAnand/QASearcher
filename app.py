@@ -1,11 +1,10 @@
 from flask import Flask, render_template, flash, request, redirect, url_for
 import p_utils
 import webbrowser
-import pyperclip
 import pickle
 
 
-app=Flask(__name__, template_folder=r"C:\Users\jigny\PycharmProjects\QAS\templates")
+app=Flask(__name__, template_folder=r"/Users/jignyas/PycharmProjects/flaskProject3/templates")
 app.secret_key="secret key"
 
 def emp():
