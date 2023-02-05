@@ -12,6 +12,18 @@
     <pre style="font-family: 'Consolas', 'Menlo', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', monospace; font-size: 17px">{{ conts[2] }}</pre>
 </div>
 
+<h3>Detected URLS</h3>
+<div class="dispre">
+    {% for url in conts[4] %}
+        {% if url=="No URLS found" %}
+            <p><a>{{ url }}</a></p>
+
+        {% else %}
+            <p><a href="{{ url }}" target="_blank">{{ url }}</a></p>
+        {% endif %}
+    {% endfor %}
+</div>
+
 <h3>New Answers</h3>
 <form id="nform" action="rets" method="post">
     <input type="hidden" value="{{ conts[0] }}" name="qid" id="qid">

@@ -2,6 +2,16 @@ from flask import Flask, render_template, flash, request, redirect, url_for
 import p_utils
 import webbrowser
 import pickle
+import re
+
+def getURLs(string):
+    # findall() has been used
+    # with valid conditions for urls in string
+    regex = r"(?i)\b((?:https?://|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}/)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:'\".,<>?«»“”‘’]))"
+    url = re.findall(regex, string)
+    if len(url)==0:
+        return ["No URLS found"]
+    return [x[0] for x in url]
 
 
 app=Flask(__name__, template_folder=r"/Users/jignyas/PycharmProjects/flaskProject3/templates")
@@ -18,7 +28,7 @@ def open_tabs():
     return "none"
 
 @app.route("/")
-def empty():
+def home():
     res=p_utils.getconts()
     ltemp=[i for i in range(1 ,len(res)+1)]
     links=p_utils.getlinks()
@@ -38,14 +48,15 @@ def ind(num1):
 
             try:
                 t=t[num1].strip()
-                print(t)
+                # print(t)
             except:
                 t=""
+            urls=getURLs(t)
 
-            pack=[num1, dct[num1], t, len(p_utils.getconts())]
+            pack=[num1, dct[num1], t, len(p_utils.getconts()), urls]
             return render_template("dispq.html", conts=pack)
         except:
-            return "Error. Try Again"
+            return redirect(url_for("home"))
     else:
         qid=request.form.get("qid")
         ans=request.form.get("tarea").strip()
