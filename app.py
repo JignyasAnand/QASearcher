@@ -32,9 +32,27 @@ def home():
     res=p_utils.getconts()
     ltemp=[i for i in range(1 ,len(res)+1)]
     links=p_utils.getlinks()
-    ql=""
-    final=list(zip(ltemp, res, links))
+    f = open("qanda.txt", "rb")
+    t = pickle.load(f)
+    print(t)
+    nansd=[]
+    # nansd=[i for i in ltemp if i not in t]
+    for i in ltemp:
+        if (i not in t):
+            nansd.append(i)
+        elif t[i]=='' or t[i]==" " or list(set(t[i]))==" ":
+            del t[i]
+            nansd.append(i)
+    print(nansd)
+    temp=list(zip(ltemp, res, links))
+    final=[]
+    q=[i for i in t]
 
+    final.append(temp)
+    final.append(q)
+    final.append(nansd)
+
+    print(final[1])
     return render_template("index.html", conts=final, temps=request.remote_addr)
 
 @app.route("/<num1>", methods=["POST", "GET"])

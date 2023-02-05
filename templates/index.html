@@ -50,18 +50,34 @@
     </colgroup>
 
     <tbody>
+{#        <p>{{ conts[1] }}</p>#}
+        <tr>
+            <th colspan="3">Answered</th>
+        </tr>
         <tr>
             <th>ID</th>
             <th>Questions</th>
             <th>Link</th>
         </tr>
-        {% for i,j,k in conts %}
+        {% for i in conts[1] %}
         <tr>
             <td><a href="{{ i }}"><span> {{ i }}</span></a></td>
-            <td>{{ j }}</td>
-            <td><a href="{{ k }}" target="_blank"><span>Go to Link</span></a></td>
+            {% set number = i  | int %}
+            <td>{{ conts[0][number-1][1] }}</td>
+            <td><a href="{{ conts[0][number-1][2] }}" target="_blank"><span>Go to Link</span></a></td>
         </tr>
-        {% endfor %}
+            {% endfor %}
+        <tr>
+            <th colspan="3">UnAnswered</th>
+        </tr>
+        {% for i in conts[2] %}
+        <tr>
+            <td><a href="{{ i }}"><span> {{ i }}</span></a></td>
+            {% set number = i  | int %}
+            <td>{{ conts[0][number-1][1] }}</td>
+            <td><a href="{{ conts[0][number-1][2] }}" target="_blank"><span>Go to Link</span></a></td>
+        </tr>
+            {% endfor %}
     </tbody>
 </table>
 <script>
