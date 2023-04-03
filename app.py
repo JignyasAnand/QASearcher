@@ -1,8 +1,12 @@
-from flask import Flask, render_template, flash, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for
 import p_utils
 import webbrowser
 import pickle
 import re
+import os
+from collections import defaultdict
+from pdfcon import text_to_pdf
+import urllib.parse
 
 fileoc="qanda.txt"
 
@@ -16,7 +20,7 @@ def getURLs(string):
     return [x[0] for x in url]
 
 
-app=Flask(__name__, template_folder=r"/Users/jignyas/PycharmProjects/flaskProject3/templates")
+app=Flask(__name__, template_folder=r"C:\Users\jigny\PycharmProjects\QASF\templates")
 app.secret_key="secret key"
 
 def emp():
@@ -29,14 +33,24 @@ def open_tabs():
         webbrowser.open(i)
     return "none"
 
+
+
 @app.route("/")
 def home():
     res=p_utils.getconts()
     ltemp=[i for i in range(1 ,len(res)+1)]
     links=p_utils.getlinks()
     f = open(fileoc, "rb")
-    t = pickle.load(f)
-    print(t)
+    try:
+        t = pickle.load(f)
+    except:
+        f.close()
+        f=open(fileoc, "wb")
+        pickle.dump(defaultdict(str), f)
+        f.close()
+        f=open(fileoc, "rb")
+        t=pickle.load(f)
+    # print(t)
     nansd=[]
     # nansd=[i for i in ltemp if i not in t]
     for i in ltemp:
@@ -45,7 +59,7 @@ def home():
         elif t[i]=='' or t[i]==" " or list(set(t[i]))==" ":
             del t[i]
             nansd.append(i)
-    print(nansd)
+    # print(nansd)
     temp=list(zip(ltemp, res, links))
     final=[]
     q=[i for i in t]
@@ -54,7 +68,7 @@ def home():
     final.append(q)
     final.append(nansd)
 
-    print(final[1])
+    # print(final[1])
     return render_template("index.html", conts=final, temps=request.remote_addr)
 
 @app.route("/<num1>", methods=["POST", "GET"])
@@ -72,8 +86,9 @@ def ind(num1):
             except:
                 t=""
             urls=getURLs(t)
-
-            pack=[num1, dct[num1], t, len(p_utils.getconts()), urls]
+            link = p_utils.getlinks()[num1-1]
+            print(link)
+            pack=[num1, dct[num1], t, len(p_utils.getconts()), urls, link]
             return render_template("dispq.html", conts=pack)
         except:
             return redirect(url_for("home"))
@@ -107,6 +122,7 @@ def rets():
 
 
 
+
 @app.route("/generate")
 def gens():
     f = open(fileoc, "rb")
@@ -115,11 +131,23 @@ def gens():
     nf=open("FINqa.txt" ,"w")
     for i in t:
         q="Q) "+ques[i]+"\n"
-        ans="A) "+t[i]+"\n\n"
+        ans="A) \n"+t[i]+"\n\n"
         nf.write(q)
         nf.write(ans)
     nf.close()
-    return "Succesfully generated the text file. Check your directory."
+
+    input_filename = 'FINqa.txt'
+    output_filename = 'FinalAnswers.pdf'
+    file = open(input_filename)
+    text = file.read()
+    file.close()
+    # file:///C:/Users/jigny/PycharmProjects/QASF/FinalAnswers.pdf
+    x=os.getcwd()
+    x=x.replace("\\", "/")
+    pdfp=f"file:///{x}/{output_filename}"
+    print(pdfp)
+    text_to_pdf(text, output_filename)
+    return "Succesfully generated the files. Check your directory."
 
 
 

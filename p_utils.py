@@ -2,7 +2,7 @@ import urllib.parse
 
 def getconts():
     arr=[]
-    with open("esdimp.txt", "r") as f:
+    with open("esdimp2.txt", "r") as f:
         temp=f.readline()
         while temp:
             if temp=="\n":

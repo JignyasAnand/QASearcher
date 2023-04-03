@@ -1,0 +1,80 @@
+
+Create hibernate mapping xml file to map Product POJO class with product table in the database.
+
+Describe about HQL and write HQL queries to retrieve, update and delete data from DB.
+
+Develop a hibernate application to retrieve all records with more than 2 columns from PRODUCT table using HQL.
+
+Develop a MVC application using,and tags with the following details:
+i) create index.html with the given fields like pid,pname and price
+ii) create a model class called 'Product' with required variables, setters and getters and a method to storeproduct details into DB.
+iii) create a controller jsp to capture the data coming from html form using the above tags
+iv) createview jsp to display the product details using action tags.
+
+Implement a jsp application using URL-Rewriting technique.
+
+Create the spring configuration xml file for spring interacting with JDBC.
+
+Configure Student bean in spring configuration xml file using constructor injection with the following properties studId,studName, studCourse and fees.
+
+Develop a spring IOC application using constructor injection with List of student names.
+
+Implement the spring IOC application using constructor injection with primitive and string based values
+
+Develop a hibernate application to retrieve all records with all columns from database table using HQL.
+
+Develop a spring IOC application to explain the Dependency injection using setter approach with the following details:
+i)Dependent class is Student
+ii) Dependencies in Student are studId, studName and Address (here Address is another class)
+iii) Address class contains the variables like street, city and state.
+iv) create spring bean configuration file
+v) then writeTestClient program
+
+Mr. ABC wants to provide mapping between Department POJO and Department table in the database using hibernate.so please help him to write proper hibernate mapping xml file only.
+
+Explain about MVC design pattern with neat diagram.
+
+The following form contains Student details. create cookies for the form fields after capturing from the form and add thosecookies to the response using jsp.
+
+Implement a hibernate application to retrieve the data from database table by applying some restrictions using HCQL.
+
+Develop a jsp appication using HttpCookie concept.
+
+Implement a Hibernate application which will perform all CRUD operations on single Record.
+
+Define Session. And list out the different types of Session Handling techniques in JSP.
+
+Configure Employee bean in spring configuration xml file using setter injection with the following propertiesempId,empName,empDesig and empSal.
+
+Develop a Hibernate application to perform all insert, update and retrieve operations on Single Record in Product table inthe database.
+
+Implement the spring IOC application using setter injection with primitive and string based values
+
+Develop a spring IOC application to perform Dependency injection with Set Collection property.
+
+Develop a spring application which is integrating with JDBC.
+
+John wants to provide mapping between Employee POJO and Employee table in the database using hibernate. so please helphim to write proper hibernate mapping xml file only.
+
+A professor is trying to configure connection details, hibernate details and mapping files details. So help him to write properhibernate configuration xml file
+
+The following form contains Employee details. create cookies for the form fields after capturing from the form and addthose cookies to the response using jsp.
+
+Implement a hibernate application to read all the records with single column from table using HQL.
+
+Develop a jsp application using session handling technique called HttpSession.
+
+Develop a hibernate inheritance mapping application using Table per concrete class
+
+A student is struggling in configuring Student Bean in spring bean configuration xml file with properties like sid, sname,course and fees using setter approach. So help him.
+
+Define Spring framework. And list out the modules in Spring framework.
+
+Implement the spring IOC application using constructor injection with primitive and string based values
+
+Create spring bean configuration file to interact with HIBERNATE from spring framework.
+
+Implement a spring application which is integrating with Hibernate.
+
+Develop a Spring MVC application which will display a message like "WELCOME TO SPRING MVC"
+
