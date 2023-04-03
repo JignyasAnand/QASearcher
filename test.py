@@ -11,10 +11,11 @@
 # import pickle
 #
 # # data={1:"Hello this is a test"}
-import pickle
-from collections import defaultdict
-f=open("qanda.txt", "wb")
-pickle.dump(defaultdict(str), f)
+
+# import pickle
+# from collections import defaultdict
+# f=open("qanda.txt", "wb")
+# pickle.dump(defaultdict(str), f)
 
 # t=pickle.load(f)
 # print(t)
@@ -33,3 +34,7 @@ pickle.dump(defaultdict(str), f)
 #         return ["No URLS found"]
 #     return [x[0] for x in url]
 # print(getURLs(stri))
+
+
+import os
+print(os.path.basename(r"C:\\test.py"))

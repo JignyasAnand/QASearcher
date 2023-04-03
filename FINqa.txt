@@ -1,4 +1,43 @@
-Q) Create hibernate mapping xml file to map Product POJO class with product table in the database.
+Q) Confusion matrix
 A) 
-https://www.tutorialspoint.com/hibernate/hibernate_mapping_files.htm
+https://towardsdatascience.com/understanding-confusion-matrix-a9ad42dcfd62
+
+Q) Back propagation and neural networks****
+A) 
+Textbook
+
+Q) Aperion algorithm with example
+A) 
+https://www.softwaretestinghelp.com/apriori-algorithm/
+
+Q) Performance metrics
+A) 
+Textbook: 364 - 369
+
+Q) Types of clustering
+A) 
+https://www.analytixlabs.co.in/blog/types-of-clustering-algorithms/
+
+Q) Hierarchical Clustering and partitioning clustering
+A) 
+https://www.analytixlabs.co.in/blog/types-of-clustering-algorithms/
+
+diff in chatgpt
+
+Q) Difference b/w classification and clustering
+A) 
+https://www.javatpoint.com/classification-vs-clustering-in-data-mining
+https://www.dotactiv.com/blog/classification-vs-clustering
+
+Q) Entropy and information gain***
+A) 
+https://www.section.io/engineering-education/entropy-information-gain-machine-learning/
+
+Q) Frequent itemset mining with example
+A) 
+https://www.softwaretestinghelp.com/apriori-algorithm/
+
+Q) Conditional probability and prior posterior
+A) 
+hello
 

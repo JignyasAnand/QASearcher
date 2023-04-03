@@ -6,9 +6,14 @@ import re
 import os
 from collections import defaultdict
 from pdfcon import text_to_pdf
+import s3b
 import urllib.parse
 
+p_util_obj=p_utils.UtilObj()
+
 fileoc="qanda.txt"
+qfile=""
+qafile=""
 
 def getURLs(string):
     # findall() has been used
@@ -23,23 +28,67 @@ def getURLs(string):
 app=Flask(__name__, template_folder=r"C:\Users\jigny\PycharmProjects\QASF\templates")
 app.secret_key="secret key"
 
+
 def emp():
     return render_template("test.html")
 
 @app.route('/open_all')
 def open_tabs():
-    arr=p_utils.getlinks()
+    arr=p_util_obj.getlinks()
     for i in arr:
         webbrowser.open(i)
     return "none"
 
+# @app.route("/", methods=["POST", "GET"])
+# def temp():
+#     if request.method=="GET":
+#         return render_template("test.html")
+#     else:
+#         f=request.files["file"]
+#         f.save(f.filename)
+#         return "success"
+
+@app.route("/", methods=["POST", "GET"])
+def chooser():
+    if request.method=="GET":
+        files=s3b.getconts("QASFiles")
+        conts=[files[1:]]
+        return render_template("chooser.html", conts=conts)
+    else:
+        global fileoc, qfile,qafile
+
+        f=request.files.get("file")
+        # f.save(f.filename)
+        if f:
+            qfile=f.filename
+            print("Uploaded")
+            f.save(f.filename)
+        else:
+            qfile = request.form["qfile"]
+            s3b.download_file(qfile)
+
+        qfile=qfile.split("QASFiles/")[-1]
+        qafile = f"{qfile[:-4]}anda.txt"
+        # qafile+="anda.txt"
+        files2=s3b.getconts("QASF2")
+
+        if "QASF2/"+qafile not in files2:
+            f1 = open(qafile, "wb")
+            pickle.dump(defaultdict(str), f1)
+            f1.close()
+        else:
+            s3b.download_file(f"QASF2/{qafile}")
+
+        fileoc=os.path.basename(qafile)
+        p_util_obj.change_fname(os.path.basename(qfile))
+        return redirect(url_for("home"))
 
 
-@app.route("/")
+@app.route("/home")
 def home():
-    res=p_utils.getconts()
+    res=p_util_obj.getconts()
     ltemp=[i for i in range(1 ,len(res)+1)]
-    links=p_utils.getlinks()
+    links=p_util_obj.getlinks()
     f = open(fileoc, "rb")
     try:
         t = pickle.load(f)
@@ -86,9 +135,9 @@ def ind(num1):
             except:
                 t=""
             urls=getURLs(t)
-            link = p_utils.getlinks()[num1-1]
+            link = p_util_obj.getlinks()[num1-1]
             print(link)
-            pack=[num1, dct[num1], t, len(p_utils.getconts()), urls, link]
+            pack=[num1, dct[num1], t, len(p_util_obj.getconts()), urls, link]
             return render_template("dispq.html", conts=pack)
         except:
             return redirect(url_for("home"))
@@ -105,7 +154,7 @@ def ind(num1):
         return redirect(url_for("ind", num1=qid))
 # @app.route("/genlinks")
 def gets():
-    res=p_utils.getconts()
+    res=p_util_obj.getconts()
     dct={}
     for i in enumerate(res):
         dct[i[0]+1]=i[1]
@@ -149,7 +198,22 @@ def gens():
     text_to_pdf(text, output_filename)
     return "Succesfully generated the files. Check your directory."
 
+try:
+    from .secret import BUCKET
+except:
+    from secret import BUCKET
 
+@app.route("/update")
+def update():
+    global qafile, qfile
+
+    if "QASFiles" not in qfile:
+        qfile=f"QASFiles/{qfile}"
+    if "QASF2" not in qafile:
+        qafile=f"QASF2/{qafile}"
+    s3b.upload_file(fileoc, BUCKET, qafile)
+    s3b.upload_file(os.path.basename(qfile), BUCKET, qfile)
+    return "Updated successfully"
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0")

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Choose the files</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+<body>
+<form action="/" method="post" enctype = "multipart/form-data">
+
+
+<table style="width: 50%">
+    <colgroup>
+       <col span="1" style="width: 75%;">
+       <col span="1" style="width: 25%;">
+    </colgroup>
+
+    <tbody>
+{#        <p>{{ conts[1] }}</p>#}
+        <tr>
+            <th colspan="2">Question File</th>
+        </tr>
+        <tr>
+            <th>Name</th>
+            <th>Choice</th>
+        </tr>
+        {% for i in conts[0] %}
+        <tr>
+            <td>{{ i }}</td>
+            {% set number = i  | int %}
+            <td><input type="radio" value="{{ i }}" name="qfile"></td>
+        </tr>
+            {% endfor %}
+
+{#        <tr>#}
+{#            <th colspan="3">Q & A File</th>#}
+{#        </tr>#}
+{#        {% for i in conts[1] %}#}
+{#        <tr>#}
+{#            <td>{{ i }}</td>#}
+{#            {% set number = i  | int %}#}
+{#            <td><input type="radio" value="{{ i }}" name="qafile"></td>#}
+{#        </tr>#}
+{#            {% endfor %}#}
+
+        <tr>
+            <th colspan="2">Or Upload a Question File</th>
+        </tr>
+        <tr>
+            <th colspan="2"><input type="file" name="file" /></th>
+        </tr>
+        <tr>
+            <th colspan="2"><button type="submit" style="width: 100%; height: 100%">Proceed</button></th>
+        </tr>
+    </tbody>
+</table>
+{#<button type="submit">Submit</button>#}
+</form>
+</body>
+</html>

@@ -26,6 +26,16 @@
                 return false;
               });
             });
+            $(function() {
+              $('a#callfunc3').on('click', function(e) {
+                e.preventDefault()
+                $.getJSON('/update',
+                    function(data) {
+                  //do nothing
+                });
+                return false;
+              });
+            });
     </script>
 </head>
 <body>
@@ -37,6 +47,8 @@
         <span class="popuptext" id="myPopup">Generated Text and PDF Files</span>
         </button>
     </a>
+    <a href=# id="callfunc3"><button type="button" class="button">Update in Cloud</button></a>
+
 </form>
 {#<div class="popup" onclick="myFunction()" style="text-align: center">Click me to toggle the popup!#}
 {#  <span class="popuptext" id="myPopup">A Simple Popup!</span>#}
