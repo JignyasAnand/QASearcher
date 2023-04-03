@@ -1,8 +1,8 @@
 import urllib.parse
 
 class UtilObj:
-    def __init__(self):
-        self.fname="dwdmimp.txt"
+    def __init__(self, name):
+        self.fname=name
     def change_fname(self, name):
         self.fname=name
 

@@ -9,8 +9,7 @@ from pdfcon import text_to_pdf
 import s3b
 import urllib.parse
 
-p_util_obj=p_utils.UtilObj()
-
+p_util_obj=None
 fileoc="qanda.txt"
 qfile=""
 qafile=""
@@ -25,7 +24,7 @@ def getURLs(string):
     return [x[0] for x in url]
 
 
-app=Flask(__name__, template_folder=r"C:\Users\jigny\PycharmProjects\QASF\templates")
+app=Flask(__name__, template_folder=r"templates")
 app.secret_key="secret key"
 
 
@@ -55,7 +54,7 @@ def chooser():
         conts=[files[1:]]
         return render_template("chooser.html", conts=conts)
     else:
-        global fileoc, qfile,qafile
+        global fileoc, qfile,qafile,p_util_obj
 
         f=request.files.get("file")
         # f.save(f.filename)
@@ -80,7 +79,9 @@ def chooser():
             s3b.download_file(f"QASF2/{qafile}")
 
         fileoc=os.path.basename(qafile)
-        p_util_obj.change_fname(os.path.basename(qfile))
+        p_util_obj = p_utils.UtilObj(os.path.basename(qfile))
+
+        # p_util_obj.change_fname(os.path.basename(qfile))
         return redirect(url_for("home"))
 
 
@@ -216,4 +217,4 @@ def update():
     return "Updated successfully"
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0")
+    app.run(host="0.0.0.0", port=8080)
